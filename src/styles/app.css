@@ -67,6 +67,10 @@ a {
 .active {
   color: #8a4baf;
 }
+.active-link {
+  color: orangered;
+  text-decoration: underline;
+}
 
 /*==========================
 About route 
@@ -115,9 +119,13 @@ Sidebar navigation
 .navbar {
   position: relative;
 }
-button {
+.navbar button {
+  position: fixed;
+  left: 40px;
+  top: 40px;
+  z-index: 10;
   cursor: pointer;
-  background: transparent;;
+  background: transparent;
   border: none;
   font-size: 20px;
 }
@@ -126,10 +134,10 @@ button {
   left: 30px;
   top: 40px;
   cursor: pointer;
-  background: transparent;;
+  background: transparent;
   border: none;
 }
-.menu-nav {
+.menuNav {
   list-style: none;
   position: absolute;
   background: #fff;
@@ -139,19 +147,24 @@ button {
   max-width: 290px;
   z-index: 9;
   font-size: 18px;
-  box-shadow: 0 10px 15px -3px rgb(46 41 51 / 8%), 0 4px 6px -2px rgb(71 63 79 / 16%);
+  box-shadow: 0 10px 15px -3px rgb(46 41 51 / 8%),
+    0 4px 6px -2px rgb(71 63 79 / 16%);
   transform: translateX(-100px);
   transition: transform ease-in-out 0.2s;
   /* transition: width ease 0.2s; */
 }
-.menu-nav.show-menu {
+.menuNav.show-menu {
   width: 100%;
   transform: translateX(0px);
 }
-.menu-nav li a, .menu-nav li span {
+.menuNav li a,
+.menuNav li span {
   display: block;
   padding: 1rem;
+  text-decoration: none;
+  font-weight: bold;
 }
+
 .log-in {
   color: #777;
   border-top: 1px solid #efecec;

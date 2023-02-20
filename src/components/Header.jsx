@@ -10,7 +10,13 @@ const Header = () => {
 
   return (
     <header style={headerStyle} className={styles.header}>
-      {/* ... */}
+      <h1
+        style={{
+          textTransform: 'lowercase',
+        }}
+      >
+        Todos
+      </h1>
     </header>
   );
 };

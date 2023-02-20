@@ -1,26 +1,27 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
-import styles from '../styles/TodoItem.module.css';
 import { FaTrash } from 'react-icons/fa';
 import { AiFillEdit } from 'react-icons/ai';
+import styles from '../styles/TodoItem.module.css';
 import { useAuthContext } from '../context/AuthContext';
 
-const TodoItem = ({ itemProp, setTodos, delTodo, setUpdate }) => {
+const TodoItem = ({
+  itemProp, setTodos, delTodo, setUpdate,
+}) => {
   const [editing, setEditing] = useState(false);
 
   const { user } = useAuthContext();
 
   const handleChange = (id) => {
-    setTodos((prevState) =>
-      prevState.map((todo) => {
-        if (todo.id === id) {
-          return {
-            ...todo,
-            completed: !todo.completed,
-          };
-        }
-        return todo;
-      })
-    );
+    setTodos((prevState) => prevState.map((todo) => {
+      if (todo.id === id) {
+        return {
+          ...todo,
+          completed: !todo.completed,
+        };
+      }
+      return todo;
+    }));
   };
 
   const completedStyle = {
@@ -34,8 +35,8 @@ const TodoItem = ({ itemProp, setTodos, delTodo, setUpdate }) => {
     setEditing(true);
   };
 
-  let viewMode = {};
-  let editMode = {};
+  const viewMode = {};
+  const editMode = {};
   if (editing) {
     viewMode.display = 'none';
   } else {
@@ -57,11 +58,11 @@ const TodoItem = ({ itemProp, setTodos, delTodo, setUpdate }) => {
           onChange={() => handleChange(itemProp.id)}
         />
         {user && (
-          <button onClick={handleEditing}>
+          <button type="submit" onClick={handleEditing}>
             <AiFillEdit style={{ color: '#5e5e5e', fontSize: '16px' }} />
           </button>
         )}
-        <button onClick={() => delTodo(itemProp.id)}>
+        <button type="submit" onClick={() => delTodo(itemProp.id)}>
           <FaTrash style={{ color: '#5e5e5e', fontSize: '16px' }} />
         </button>
         <span style={itemProp.completed ? completedStyle : null}>

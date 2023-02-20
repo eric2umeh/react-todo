@@ -31,20 +31,18 @@ const Navbar = () => {
         )}
       </button>
       <ul className={`menuNav ${navbarOpen ? ' show-menu' : ''}`}>
-        {links.map((link) => {
-          return (
-            <li key={link.text}>
-              <NavLink
-                to={link.path}
-                activeClassName="active-link"
-                onClick={() => closeMenu()}
-                exact
-              >
-                {link.text}
-              </NavLink>
-            </li>
-          );
-        })}
+        {links.map((link) => (
+          <li key={link.text}>
+            <NavLink
+              to={link.path}
+              activeClassName="active-link"
+              onClick={() => closeMenu()}
+              exact
+            >
+              {link.text}
+            </NavLink>
+          </li>
+        ))}
       </ul>
     </nav>
   );

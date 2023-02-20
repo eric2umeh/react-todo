@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
-import { useOnClickOutside } from '../useOnClickOutside';
+import useOnClickOutside from '../useOnClickOutside';
+
 const Modal = () => {
   const [openModal, setOpenModal] = useState(false);
   const ref = useRef();
@@ -7,10 +8,10 @@ const Modal = () => {
   useOnClickOutside(ref, openModal, () => setOpenModal(false));
   return (
     <div className="modal">
-      <button onClick={() => setOpenModal(true)}>Modal</button>
+      <button type="submit" onClick={() => setOpenModal(true)}>Modal</button>
       {openModal && (
         <div ref={ref} className="modalContent">
-          <span onClick={() => setOpenModal(false)}>X</span>
+          {/* <span onClick={() => setOpenModal(false)} >X</span> */}
           <div>Modal content here</div>
         </div>
       )}

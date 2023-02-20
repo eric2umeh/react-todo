@@ -7,7 +7,11 @@ const Profile = () => {
     <div>
       <h1>profile.</h1>
       <div className={styles.profile}>
-        <h2>Hello, {user}</h2>
+        <h2>
+          Hello,
+          {' '}
+          {user}
+        </h2>
       </div>
     </div>
   );

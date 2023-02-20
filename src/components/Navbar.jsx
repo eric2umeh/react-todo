@@ -1,4 +1,8 @@
-import { NavLink } from "react-router-dom";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import { useAuthContext } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
+
 const links = [
   { path: '/', text: 'Home' },
   { path: 'about', text: 'About' },
@@ -6,18 +10,49 @@ const links = [
   { path: 'login', text: 'Login' },
 ];
 const Navbar = () => {
+  const { user, logout } = useAuthContext();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
+
+  const navigate = useNavigate();
+  const handleSubmit = (e) => {
+    // ...
+    navigate('/', { replace: true });
+  };
+
   return (
-    <nav className="navbar">
-    <ul>
-      {links.map((link) => {
-        return (
-          <li key={link.text}>
-            <NavLink to={link.path}>{link.text}</NavLink>
-          </li>
-        );
-      })}
-    </ul>
-  </nav>
+    <>
+      <nav className="navbar">
+        <ul>
+          {links.map((link) => {
+            return (
+              <React.Fragment key={link.text}>
+                {link.path === 'login' ? (
+                  !user && (
+                    <li>
+                      <NavLink to={link.path}>{link.text}</NavLink>
+                    </li>
+                  )
+                ) : (
+                  <li>
+                    <NavLink to={link.path}>{link.text}</NavLink>
+                  </li>
+                )}
+              </React.Fragment>
+            );
+          })}
+        </ul>
+      </nav>
+      {user && (
+        <div className="logout">
+          <p>{user}</p>
+          {<button onClick={handleLogout}>Logout</button>}
+        </div>
+      )}
+    </>
   );
 };
 export default Navbar;

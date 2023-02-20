@@ -58,9 +58,7 @@ const TodoItem = ({ itemProp, setTodos, delTodo, setUpdate }) => {
         />
         {user && (
           <button onClick={handleEditing}>
-            <AiFillEdit
-              style={{ color: '#5e5e5e', fontSize: '16px' }}
-            />
+            <AiFillEdit style={{ color: '#5e5e5e', fontSize: '16px' }} />
           </button>
         )}
         <button onClick={() => delTodo(itemProp.id)}>

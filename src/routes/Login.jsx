@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useAuthContext } from '../context/AuthContext';
-import styles from '../styles/Login.module.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {

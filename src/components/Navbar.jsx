@@ -36,6 +36,12 @@ const Navbar = () => {
                       <NavLink to={link.path}>{link.text}</NavLink>
                     </li>
                   )
+                ) : link.path === 'profile' ? (
+                  user && (
+                    <li>
+                      <NavLink to={link.path}>{link.text}</NavLink>
+                    </li>
+                  )
                 ) : (
                   <li>
                     <NavLink to={link.path}>{link.text}</NavLink>
@@ -46,6 +52,7 @@ const Navbar = () => {
           })}
         </ul>
       </nav>
+
       {user && (
         <div className="logout">
           <p>{user}</p>

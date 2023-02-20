@@ -7,6 +7,7 @@ import Profile from '../routes/Profile';
 import NotMatch from '../routes/NotMatch';
 import SinglePage from '../routes/SinglePage';
 import Layout from './Layout';
+import ProtectedRoute from './ProtectedRoute';
 
 const TodoApp = () => {
   return (
@@ -17,7 +18,14 @@ const TodoApp = () => {
           <Route path=":slug" element={<SinglePage />} />
         </Route>
         <Route path="login" element={<Login />} />
-        <Route path="profile" element={<Profile />} />
+        <Route
+          path="profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
         <Route path="*" element={<NotMatch />} />
       </Route>
     </Routes>

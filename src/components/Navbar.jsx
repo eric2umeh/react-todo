@@ -50,6 +50,11 @@ const Navbar = () => {
               </React.Fragment>
             );
           })}
+          {!user && (
+            <li className="log-in">
+              <span>Log in to edit to-dos</span>
+            </li>
+          )}
         </ul>
       </nav>
 

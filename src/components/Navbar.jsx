@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useAuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
@@ -10,6 +10,8 @@ const links = [
   { path: 'login', text: 'Login' },
 ];
 const Navbar = () => {
+  const [navbarOpen, setNavbarOpen] = useState(false);
+
   const { user, logout } = useAuthContext();
 
   const handleLogout = () => {
@@ -25,8 +27,11 @@ const Navbar = () => {
 
   return (
     <>
+      <button className="toggle" onClick={() => setNavbarOpen((prev) => !prev)}>
+        {navbarOpen ? 'close' : 'open'}
+      </button>
       <nav className="navbar">
-        <ul>
+        <ul className={`menu-nav${navbarOpen ? ' show-menu' : ''}`}>
           {links.map((link) => {
             return (
               <React.Fragment key={link.text}>
